@@ -1,43 +1,44 @@
-# Patterns and flags
+# Şablonlar və bayraqlar (Patterns and flags)
 
-Regular expressions are patterns that provide a powerful way to search and replace in text.
+Qaydalı ifadələr(Regular expressions) mətn daxilində axtarış etmık və yerdəyişmə əməliyatlarını təmin edən bir şablonlardır.
 
-In JavaScript, they are available via the [RegExp](mdn:js/RegExp) object, as well as being integrated in methods of strings.
+Biz Javascript - də onları RegExp obyekti vasitəsilə vəya string - lərin methodalarına inteqrasiya olunmuş şəkildə istifadə edə bilərik.
 
-## Regular Expressions
+## Qaydalı İfadələr (Regular Expressions)
 
-A regular expression (also "regexp", or just "reg") consists of a *pattern* and optional *flags*.
+Qaydalı ifadə(A regular expression) (Həmçinin "regexp" kimi bilinir vəya sadəcə "reg" olaraqda adlandırılır) şablonlandan(pattern) və isdəyə bağlı olaraq bayraqlardan (flags) ibarətdir
 
-There are two syntaxes that can be used to create a regular expression object.
+Qaydalı ifadə(Regular expression) obyekti yaratmaq üçün 2 sintaksisdən istifadə edilə bilər
 
-The "long" syntax:
-
-```js
-regexp = new RegExp("pattern", "flags");
-```
-
-And the "short" one, using slashes `"/"`:
+Uzun sintaksis:
 
 ```js
-regexp = /pattern/; // no flags
-regexp = /pattern/gmi; // with flags g,m and i (to be covered soon)
+regexp = new RegExp("şablon", "bayraqlar");
 ```
 
-Slashes `pattern:/.../` tell JavaScript that we are creating a regular expression. They play the same role as quotes for strings.
-
-In both cases `regexp` becomes an instance of the built-in `RegExp` class.
-
-The main difference between these two syntaxes is that pattern using slashes `/.../` does not allow for expressions to be inserted (like string template literals with `${...}`). They are fully static.
-
-Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp`, is more often used when we need to create a regexp "on the fly" from a dynamically generated string. For instance:
+Və slaş işarələrindən istifadə edilərək qısa sintaksis:
 
 ```js
-let tag = prompt("What tag do you want to find?", "h2");
-
-let regexp = new RegExp(`<${tag}>`); // same as /<h2>/ if answered "h2" in the prompt above
+regexp = /şablon/; // no flags
+regexp = /şablon/gmi; // bayraqlarla g,m and i (tezliklə bu haqda bəhs ediləcək)
 ```
 
-## Flags
+Slaş simvollarl (\`pattern:/.../\`) Javascriptə deyir ki, biz qaydalı ifadə yaradırıq. Slaş simvoları string üçün dırnaq işarələri ilə eyni mənanı ifadə edir.
+
+Hər iki halda qaydalı ifadə (qısaca 'regexp' deyə bilərik) daxili (built-in) 'RegExp' sinifindən yaradılmış obyekt olur.
+
+Bu iki sintaksis arasındakı əsas fərq, slaş simvollarının istifadəsi ilə yaradılan şablon başqa ifadələrin istifadə edilməsinə icazı vermir. Misal üçün \`${...}\` ifadəsi ilə \`/.../\` bir yerdə işlənə bilməz. Bu üsul tamamilə sabitdir.
+
+Əgər biz kod yazan zaman qaydalı ifadəni biliriksə (Misal üçün sabit bir string) - bu daha adi ümumi vəziyyətdi onda slaş simvollarından istifadə edirik. `new RegExp` isə, dinamik yaradılan stringlərdən regexp yaratmaq lazım olan zaman daha tez-tez istifadə edilir. Misal üçün:
+
+
+```js
+let tag = prompt("Hansı teqi tapmaq isdəyirsiz?", "h2");
+
+let regexp = new RegExp(`<${tag}>`); // əgər h2 cavablasaq dəyişənin qiyməti /<h2>/ kimi olacaq
+```
+
+## Bayraqlar (Flags)
 
 Regular expressions may have flags that affect the search.
 
@@ -51,7 +52,7 @@ There are only 6 of them in JavaScript:
 
 `pattern:m`
 : Multiline mode (covered in the chapter <info:regexp-multiline-mode>).
-
+g
 `pattern:s`
 : Enables "dotall" mode, that allows a dot `pattern:.` to match newline character `\n` (covered in the chapter <info:regexp-character-classes>).
 
